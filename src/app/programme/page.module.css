@@ -1,0 +1,167 @@
+.main {
+    min-height: 100vh;
+    padding: 8rem 0 5rem;
+    background-color: var(--color-brand-espresso);
+    background-image: url('/images/dj.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--color-brand-cream);
+    position: relative;
+}
+
+.heroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 18, 13, 0.92);
+    /* Deep dark overlay */
+    backdrop-filter: blur(5px);
+    z-index: 0;
+}
+
+.header {
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.backLink {
+    display: inline-block;
+    color: var(--color-brand-latte);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.backLink:hover {
+    text-decoration: underline;
+    color: var(--color-brand-gold);
+}
+
+.title {
+    font-size: 3.5rem;
+    color: var(--color-brand-gold);
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    color: rgba(249, 246, 240, 0.8);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.programList {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.eventCard {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+}
+
+.eventCard:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(212, 175, 55, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.eventDate {
+    background: rgba(212, 175, 55, 0.1);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-right: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.day {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--color-brand-gold);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.date {
+    font-weight: 500;
+    color: var(--color-brand-white);
+    margin-bottom: 1rem;
+}
+
+.time {
+    font-size: 0.9rem;
+    color: var(--color-brand-latte);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.4rem 0.8rem;
+    border-radius: 50px;
+}
+
+.eventContent {
+    padding: 2.5rem;
+}
+
+.eventTitle {
+    font-size: 2rem;
+    color: var(--color-brand-white);
+    margin-bottom: 0.5rem;
+}
+
+.eventArtist {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: rgba(249, 246, 240, 0.7);
+    margin-bottom: 1.5rem;
+}
+
+.artistName {
+    color: var(--color-brand-gold);
+    font-weight: 500;
+}
+
+.eventDesc {
+    color: rgba(249, 246, 240, 0.8);
+    margin-bottom: 2rem;
+}
+
+.bookBtn {
+    background-color: var(--color-brand-gold);
+    color: var(--color-brand-espresso);
+    font-weight: 600;
+}
+
+.bookBtn:hover {
+    background-color: var(--color-brand-white);
+    color: var(--color-brand-espresso);
+}
+
+@media (max-width: 768px) {
+    .eventCard {
+        grid-template-columns: 1fr;
+    }
+
+    .eventDate {
+        border-right: none;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        padding: 1.5rem;
+    }
+
+    .eventContent {
+        padding: 1.5rem;
+    }
+}
