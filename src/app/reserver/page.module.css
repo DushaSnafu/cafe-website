@@ -11,25 +11,29 @@
 
 .backLink {
     display: inline-block;
-    color: var(--color-brand-latte);
+    color: var(--color-accent);
     margin-bottom: 1.5rem;
     font-weight: 500;
     font-size: 0.95rem;
+    transition: all var(--transition-fast);
 }
 
 .backLink:hover {
     text-decoration: underline;
+    color: var(--color-accent-deep);
 }
 
 .title {
     font-size: 3rem;
     color: var(--color-brand-espresso);
     margin-bottom: 1rem;
+    letter-spacing: -1px;
 }
 
 .subtitle {
     color: var(--color-text-light);
     font-size: 1.1rem;
+    line-height: 1.7;
 }
 
 .bookingContainer {
@@ -40,10 +44,13 @@
 }
 
 .formSection {
-    background-color: var(--color-brand-white);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 3rem;
     border-radius: var(--border-radius-lg);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(200, 149, 108, 0.08);
 }
 
 .formGroup {
@@ -66,12 +73,13 @@
 }
 
 .optionCard {
-    border: 2px solid #EAE2D8;
+    border: 2px solid rgba(200, 149, 108, 0.15);
     border-radius: var(--border-radius-md);
     padding: 1.5rem 1rem;
     text-align: center;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: all var(--transition-normal);
+    background: rgba(255, 255, 255, 0.5);
 }
 
 .optionCard h3 {
@@ -86,14 +94,16 @@
 }
 
 .optionCard:hover {
-    border-color: var(--color-brand-latte);
-    transform: translateY(-2px);
+    border-color: var(--color-accent);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(200, 149, 108, 0.1);
 }
 
 .optionCard.selected {
     border-color: var(--color-brand-espresso);
-    background-color: var(--color-brand-espresso);
+    background: linear-gradient(135deg, var(--color-brand-espresso), #4A3428);
     color: var(--color-brand-white);
+    box-shadow: 0 8px 25px rgba(44, 30, 22, 0.2);
 }
 
 .optionCard.selected h3,
@@ -104,17 +114,18 @@
 .input {
     width: 100%;
     padding: 1rem 1.2rem;
-    border: 1px solid #EAE2D8;
+    border: 1.5px solid rgba(200, 149, 108, 0.15);
     border-radius: var(--border-radius-sm);
     font-family: var(--font-sans);
     font-size: 1rem;
-    background-color: #FAFAFA;
+    background-color: rgba(255, 255, 255, 0.6);
     outline: none;
-    transition: border-color var(--transition-fast);
+    transition: all var(--transition-fast);
 }
 
 .input:focus {
-    border-color: var(--color-brand-latte);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(200, 149, 108, 0.1);
 }
 
 .timeGrid {
@@ -125,7 +136,7 @@
 
 .timeSlot {
     padding: 0.8rem;
-    border: 1px solid #EAE2D8;
+    border: 1.5px solid rgba(200, 149, 108, 0.15);
     border-radius: var(--border-radius-sm);
     background: transparent;
     cursor: pointer;
@@ -135,14 +146,16 @@
 }
 
 .timeSlot:hover:not(:disabled) {
-    border-color: var(--color-brand-latte);
-    color: var(--color-brand-latte);
+    border-color: var(--color-accent);
+    color: var(--color-accent-deep);
+    background: rgba(200, 149, 108, 0.05);
 }
 
 .timeSlot.selected {
-    background-color: var(--color-brand-latte);
-    border-color: var(--color-brand-latte);
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-deep));
+    border-color: var(--color-accent);
     color: var(--color-brand-white);
+    box-shadow: 0 4px 12px rgba(200, 149, 108, 0.3);
 }
 
 .timeSlot:disabled {
@@ -163,6 +176,14 @@
     font-size: 1.1rem;
     padding: 1.2rem;
     border-radius: var(--border-radius-sm);
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-deep));
+    color: var(--color-brand-white);
+    box-shadow: 0 4px 20px rgba(200, 149, 108, 0.3);
+}
+
+.submitBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(200, 149, 108, 0.45);
 }
 
 .summarySection {
@@ -171,18 +192,32 @@
 }
 
 .summaryCard {
-    background-color: var(--color-brand-espresso);
+    background: linear-gradient(135deg, var(--color-brand-espresso), #3A2A20);
     color: var(--color-brand-cream);
     padding: 2.5rem;
     border-radius: var(--border-radius-lg);
-    box-shadow: 0 15px 40px rgba(44, 30, 22, 0.2);
+    box-shadow: 0 20px 50px rgba(44, 30, 22, 0.25);
+    border: 1px solid rgba(200, 149, 108, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.summaryCard::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(200, 149, 108, 0.1) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .summaryTitle {
-    color: var(--color-brand-gold);
+    color: var(--color-accent-light);
     font-size: 1.5rem;
     margin-bottom: 2rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(200, 149, 108, 0.15);
     padding-bottom: 1rem;
 }
 
@@ -193,7 +228,7 @@
 }
 
 .summaryLabel {
-    color: rgba(249, 246, 240, 0.7);
+    color: rgba(249, 246, 240, 0.6);
 }
 
 .summaryValue {
@@ -202,19 +237,19 @@
 
 .summaryDivider {
     height: 1px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(90deg, transparent, rgba(200, 149, 108, 0.3), transparent);
     margin: 1.5rem 0;
 }
 
 .summaryTotal {
     font-size: 1.5rem;
-    color: var(--color-brand-gold);
+    color: var(--color-accent);
     font-weight: 600;
 }
 
 .summaryNote {
     font-size: 0.8rem;
-    color: rgba(249, 246, 240, 0.5);
+    color: rgba(249, 246, 240, 0.45);
     margin-top: 2rem;
     line-height: 1.4;
 }

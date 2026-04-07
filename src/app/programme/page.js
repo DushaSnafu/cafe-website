@@ -13,6 +13,7 @@ const events = [
         title: "Afterwork Chill Vibes",
         artist: "DJ Solange",
         time: "18:00 - 23:00",
+        emoji: "🎵",
         description: "La transition parfaite pour terminer la semaine de travail. Des sonorités Lo-Fi, Nu-Jazz et Neo-Soul pour se détendre autour d'un cocktail signature."
     },
     {
@@ -21,6 +22,7 @@ const events = [
         title: "House & Latte",
         artist: "Duo Groove",
         time: "20:00 - 01:00",
+        emoji: "🔊",
         description: "La température monte d'un cran. Un set Deep House élégant inspiré des nuits berlinoises, adapté à un espace lounge premium."
     },
     {
@@ -29,6 +31,7 @@ const events = [
         title: "Vinyles Only",
         artist: "Collectif Wax",
         time: "19:00 - 01:00",
+        emoji: "💿",
         description: "Retour aux sources avec une sélection 100% vinyles. De la Funk au Disco en passant par la House classique."
     }
 ];
@@ -53,7 +56,7 @@ export default function Programme() {
                                 <span className={styles.time}>{evt.time}</span>
                             </div>
                             <div className={styles.eventContent}>
-                                <h2 className={styles.eventTitle}>{evt.title}</h2>
+                                <h2 className={styles.eventTitle}>{evt.emoji} {evt.title}</h2>
                                 <h3 className={styles.eventArtist}>Line-up: <span className={styles.artistName}>{evt.artist}</span></h3>
                                 <p className={styles.eventDesc}>{evt.description}</p>
                                 <Link href="/reserver" className={`btn btn-primary ${styles.bookBtn}`}>

@@ -14,7 +14,7 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  filter: brightness(0.85);
+  filter: brightness(0.8) saturate(1.1);
 }
 
 .heroOverlay {
@@ -23,7 +23,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(44, 30, 22, 0.6) 0%, rgba(44, 30, 22, 0.9) 100%);
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(44, 30, 22, 0.5) 0%, transparent 70%),
+    linear-gradient(to bottom, rgba(44, 30, 22, 0.4) 0%, rgba(44, 30, 22, 0.85) 100%);
   z-index: 1;
 }
 
@@ -36,45 +38,92 @@
 }
 
 .heroTitle {
-  font-size: 5rem;
-  line-height: 1.1;
+  font-size: 5.5rem;
+  line-height: 1.05;
   margin-bottom: 1.5rem;
   color: var(--color-brand-white);
+  letter-spacing: -2px;
+}
+
+.heroAccent {
+  background: linear-gradient(135deg, var(--color-accent-glow), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .heroSubtitle {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 300;
-  margin-bottom: 2.5rem;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 600px;
+  margin-bottom: 3rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 580px;
+  line-height: 1.7;
 }
 
+.heroCtas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.heroScrollIndicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  animation: float 3s ease-in-out infinite;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 30px;
+  background: linear-gradient(to bottom, rgba(200, 149, 108, 0.6), transparent);
+}
+
+/* ============================
+   SECTION TITLES
+   ============================ */
 .sectionTitle {
   font-size: 3rem;
   color: var(--color-brand-espresso);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
 }
 
 .sectionSubtitle {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   margin-bottom: 4rem;
   color: var(--color-text-light);
-  max-width: 700px;
+  max-width: 650px;
   margin-inline: auto;
+  line-height: 1.7;
 }
 
+/* ============================
+   GRID & FLEX
+   ============================ */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 3rem;
+  gap: 2.5rem;
   align-items: stretch;
 }
 
 .flexSection {
   display: flex;
   align-items: center;
-  gap: 4rem;
+  gap: 5rem;
 }
 
 .flexSection>* {
@@ -84,7 +133,17 @@
 .flexImageWrapper {
   border-radius: var(--border-radius-lg);
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+  position: relative;
+}
+
+.flexImageWrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid rgba(200, 149, 108, 0.15);
+  pointer-events: none;
 }
 
 .flexImage {
@@ -92,27 +151,106 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.flexImageWrapper:hover .flexImage {
+  transform: scale(1.03);
+}
+
+/* Feature list */
+.featureList {
+  list-style: none;
+  margin-bottom: 2.5rem;
+}
+
+.featureList li {
+  position: relative;
+  padding-left: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+.featureList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+}
+
+/* ============================
+   DARK SECTION
+   ============================ */
 .darkSection {
   background-color: var(--color-brand-espresso);
   color: var(--color-brand-cream);
+  position: relative;
+  overflow: hidden;
+}
+
+.darkSection::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(200, 149, 108, 0.08) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .darkSection .sectionTitle {
-  color: var(--color-brand-gold);
+  color: var(--color-accent-light);
 }
 
 .darkSection .sectionSubtitle,
 .darkSection p {
-  color: rgba(249, 246, 240, 0.8);
+  color: rgba(249, 246, 240, 0.75);
 }
 
-/* Footer */
+.darkImageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  margin: 0 auto;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+.darkImageWrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(200, 149, 108, 0.15);
+  border-radius: var(--border-radius-lg);
+  pointer-events: none;
+}
+
+/* ============================
+   FOOTER
+   ============================ */
 .footer {
-  background-color: #1a120d;
-  color: rgba(255, 255, 255, 0.7);
+  background-color: var(--color-brand-cream);
+  color: var(--color-text-light);
   padding: 5rem 0 2rem;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
 }
 
 .footerGrid {
@@ -125,12 +263,12 @@
 .footerLogo {
   font-family: var(--font-serif);
   font-size: 1.8rem;
-  color: var(--color-brand-gold);
+  color: var(--color-brand-espresso);
   margin-bottom: 1rem;
 }
 
 .footerTitle {
-  color: var(--color-brand-white);
+  color: var(--color-brand-espresso);
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
 }
@@ -141,27 +279,49 @@
 
 .footerList li {
   margin-bottom: 0.8rem;
+  transition: color var(--transition-fast);
+}
+
+.footerList li:hover {
+  color: var(--color-accent-deep);
 }
 
 .footerBottom {
   text-align: center;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(44, 30, 22, 0.08);
   font-size: 0.9rem;
 }
 
+/* ============================
+   RESPONSIVE
+   ============================ */
 @media (max-width: 992px) {
   .flexSection {
     flex-direction: column;
+    gap: 3rem;
   }
 }
 
 @media (max-width: 768px) {
   .heroTitle {
     font-size: 3.5rem;
+    letter-spacing: -1px;
+  }
+
+  .heroSubtitle {
+    font-size: 1.1rem;
   }
 
   .sectionTitle {
     font-size: 2.5rem;
+  }
+
+  .heroCtas {
+    flex-direction: column;
+  }
+
+  .heroScrollIndicator {
+    display: none;
   }
 }
