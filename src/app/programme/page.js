@@ -9,29 +9,29 @@ export const metadata = {
 const events = [
     {
         day: "Jeudi",
-        date: "26 Février",
+        date: "16 Juillet",
         title: "Afterwork Chill Vibes",
         artist: "DJ Solange",
         time: "18:00 - 23:00",
-        emoji: "🎵",
+        genre: "Lo-Fi · Nu-jazz · Neo-soul",
         description: "La transition parfaite pour terminer la semaine de travail. Des sonorités Lo-Fi, Nu-Jazz et Neo-Soul pour se détendre autour d'un cocktail signature."
     },
     {
         day: "Vendredi",
-        date: "27 Février",
+        date: "17 Juillet",
         title: "House & Latte",
         artist: "Duo Groove",
         time: "20:00 - 01:00",
-        emoji: "🔊",
+        genre: "Deep house · Soulful",
         description: "La température monte d'un cran. Un set Deep House élégant inspiré des nuits berlinoises, adapté à un espace lounge premium."
     },
     {
         day: "Samedi",
-        date: "28 Février",
+        date: "18 Juillet",
         title: "Vinyles Only",
         artist: "Collectif Wax",
         time: "19:00 - 01:00",
-        emoji: "💿",
+        genre: "Funk · Disco · House",
         description: "Retour aux sources avec une sélection 100% vinyles. De la Funk au Disco en passant par la House classique."
     }
 ];
@@ -43,7 +43,8 @@ export default function Programme() {
             <div className="container relative" style={{ zIndex: 1, position: 'relative' }}>
                 <div className={styles.header}>
                     <Link href="/" className={styles.backLink}>← Retour à l'accueil</Link>
-                    <h1 className={styles.title}>Le Programme</h1>
+                    <p className={styles.kicker}>Cette semaine à L’Équilibre</p>
+                    <h1 className={styles.title}>Après 18 h,<br />on monte le son<span>.</span></h1>
                     <p className={styles.subtitle}>Dès 18h, la lumière se tamise, les ordinateurs se ferment et la musique prend le contrôle.</p>
                 </div>
 
@@ -56,13 +57,15 @@ export default function Programme() {
                                 <span className={styles.time}>{evt.time}</span>
                             </div>
                             <div className={styles.eventContent}>
-                                <h2 className={styles.eventTitle}>{evt.emoji} {evt.title}</h2>
-                                <h3 className={styles.eventArtist}>Line-up: <span className={styles.artistName}>{evt.artist}</span></h3>
+                                <span className={styles.genre}>{evt.genre}</span>
+                                <h2 className={styles.eventTitle}>{evt.title}</h2>
+                                <h3 className={styles.eventArtist}>Avec <span className={styles.artistName}>{evt.artist}</span></h3>
                                 <p className={styles.eventDesc}>{evt.description}</p>
                                 <Link href="/reserver" className={`btn btn-primary ${styles.bookBtn}`}>
                                     Réserver une table
                                 </Link>
                             </div>
+                            <span className={styles.eventIndex}>0{index + 1}</span>
                         </div>
                     ))}
                 </div>

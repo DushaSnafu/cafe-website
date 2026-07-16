@@ -1,185 +1,26 @@
-.main {
-    min-height: 100vh;
-    padding: 8rem 0 5rem;
-    background-color: var(--color-brand-espresso);
-    background-image: url('/images/dj.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: var(--color-brand-cream);
-    position: relative;
-}
-
-.heroOverlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:
-        radial-gradient(ellipse at 50% 0%, rgba(200, 149, 108, 0.06) 0%, transparent 60%),
-        rgba(26, 18, 13, 0.92);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    z-index: 0;
-}
-
-.header {
-    margin-bottom: 4rem;
-    text-align: center;
-}
-
-.backLink {
-    display: inline-block;
-    color: var(--color-accent-light);
-    margin-bottom: 1.5rem;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: all var(--transition-fast);
-}
-
-.backLink:hover {
-    color: var(--color-accent);
-    text-decoration: underline;
-}
-
-.title {
-    font-size: 3.5rem;
-    color: var(--color-accent-light);
-    margin-bottom: 1rem;
-    letter-spacing: -1px;
-}
-
-.subtitle {
-    color: rgba(249, 246, 240, 0.75);
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.7;
-}
-
-.programList {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.eventCard {
-    display: grid;
-    grid-template-columns: 250px 1fr;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(200, 149, 108, 0.15);
-    border-radius: var(--border-radius-md);
-    overflow: hidden;
-    transition: all var(--transition-smooth);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
-.eventCard:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(200, 149, 108, 0.4);
-    transform: translateY(-5px);
-    box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.4),
-        0 0 30px rgba(200, 149, 108, 0.08);
-}
-
-.eventDate {
-    background: rgba(200, 149, 108, 0.08);
-    padding: 2.5rem 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border-right: 1px solid rgba(200, 149, 108, 0.1);
-}
-
-.day {
-    font-family: var(--font-serif);
-    font-size: 1.8rem;
-    color: var(--color-accent);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-}
-
-.date {
-    font-weight: 500;
-    color: var(--color-brand-white);
-    margin-bottom: 1rem;
-}
-
-.time {
-    font-size: 0.9rem;
-    color: var(--color-accent-light);
-    background: rgba(200, 149, 108, 0.12);
-    padding: 0.4rem 0.8rem;
-    border-radius: 50px;
-    border: 1px solid rgba(200, 149, 108, 0.15);
-}
-
-.eventContent {
-    padding: 2.5rem;
-}
-
-.eventTitle {
-    font-size: 2rem;
-    color: var(--color-brand-white);
-    margin-bottom: 0.5rem;
-}
-
-.eventArtist {
-    font-family: var(--font-sans);
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: rgba(249, 246, 240, 0.65);
-    margin-bottom: 1.5rem;
-}
-
-.artistName {
-    color: var(--color-accent);
-    font-weight: 500;
-}
-
-.eventDesc {
-    color: rgba(249, 246, 240, 0.75);
-    margin-bottom: 2rem;
-    line-height: 1.7;
-}
-
-.bookBtn {
-    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-deep));
-    color: var(--color-brand-white);
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(200, 149, 108, 0.3);
-}
-
-.bookBtn:hover {
-    background: linear-gradient(135deg, var(--color-accent-light), var(--color-accent));
-    color: var(--color-brand-espresso);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(200, 149, 108, 0.4);
-}
-
-@media (max-width: 768px) {
-    .eventCard {
-        grid-template-columns: 1fr;
-    }
-
-    .eventDate {
-        border-right: none;
-        border-bottom: 1px solid rgba(200, 149, 108, 0.1);
-        padding: 1.5rem;
-    }
-
-    .eventContent {
-        padding: 1.5rem;
-    }
-
-    .title {
-        font-size: 2.5rem;
-    }
-}
+.main { min-height: 100vh; padding: 9rem 0 6rem; background: var(--color-night); color: #fff; position: relative; overflow: hidden; }
+.main::before { content: ''; position: fixed; inset: 0; background: url('/images/dj.png') center/cover; opacity: .18; filter: saturate(.6); }
+.heroOverlay { position: fixed; inset: 0; background: linear-gradient(180deg, rgba(16,20,17,.78), var(--color-night) 60%); }
+.header { max-width: 880px; margin: 0 auto clamp(4rem,8vw,7rem); text-align: center; }
+.backLink { min-height: 44px; display: inline-flex; align-items: center; margin-bottom: 1.5rem; color: var(--color-accent-light); font-size: .88rem; font-weight: 650; }
+.backLink:hover { text-decoration: underline; text-underline-offset: 4px; }
+.kicker { margin-bottom: 1.2rem; color: var(--color-lime); font-size: .76rem; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; }
+.title { font-size: clamp(3.4rem,8vw,6.7rem); line-height: .87; letter-spacing: -.04em; }
+.title span { color: var(--color-accent); }
+.subtitle { max-width: 610px; margin: 1.8rem auto 0; color: rgba(255,255,255,.72); font-size: 1.05rem; }
+.programList { max-width: 1060px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,.22); }
+.eventCard { position: relative; display: grid; grid-template-columns: 210px 1fr; gap: clamp(1.5rem,5vw,5rem); padding: clamp(2rem,5vw,4rem) clamp(0rem,3vw,2rem); border-bottom: 1px solid rgba(255,255,255,.22); transition: background-color 220ms var(--ease-out), padding-left 220ms var(--ease-out); }
+.eventCard:hover { background: rgba(255,255,255,.045); padding-left: 2rem; }
+.eventDate { display: flex; flex-direction: column; align-items: flex-start; }
+.day { color: var(--color-accent-light); font-size: clamp(1.7rem,3vw,2.4rem); font-weight: 700; letter-spacing: -.04em; }
+.date { margin-top: .2rem; color: rgba(255,255,255,.72); font-size: .88rem; }
+.time { margin-top: 1.3rem; padding: .55rem .75rem; background: var(--color-lime); color: var(--color-ink); border-radius: var(--radius-sm); font-size: .78rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.eventContent { max-width: 650px; }
+.genre { display: inline-block; margin-bottom: 1rem; color: rgba(255,255,255,.54); font-size: .7rem; font-weight: 650; letter-spacing: .06em; text-transform: uppercase; }
+.eventTitle { margin-bottom: .65rem; font-size: clamp(2rem,4vw,3.4rem); line-height: .95; }
+.eventArtist { margin-bottom: 1.5rem; font-size: 1rem; font-weight: 450; letter-spacing: 0; color: rgba(255,255,255,.64); }
+.artistName { color: var(--color-accent-light); font-weight: 650; }
+.eventDesc { max-width: 60ch; margin-bottom: 2rem; color: rgba(255,255,255,.7); }
+.bookBtn { box-shadow: 0 4px 0 var(--color-accent-dark); }
+.eventIndex { position: absolute; right: 0; top: 2rem; color: rgba(255,255,255,.28); font-size: .72rem; font-variant-numeric: tabular-nums; }
+@media (max-width: 700px) { .eventCard { grid-template-columns: 1fr; gap: 1.5rem; } .eventCard:hover { padding-left: 1rem; } .eventDate { flex-direction: row; align-items: center; gap: .7rem; flex-wrap: wrap; } .time { margin: 0; } .eventIndex { top: 2.3rem; } }

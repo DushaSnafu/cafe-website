@@ -8,6 +8,7 @@ export default function Reserver() {
     const [selectedSpace, setSelectedSpace] = useState('Le Workspace');
     const [selectedDate, setSelectedDate] = useState('');
     const [selectedTime, setSelectedTime] = useState('11:00');
+    const [confirmed, setConfirmed] = useState(false);
 
     const spaces = [
         { id: 'Le Workspace', title: 'Le Workspace', desc: 'Bureau individuel', price: '15,00 €' },
@@ -34,26 +35,29 @@ export default function Reserver() {
             <div className="container">
                 <div className={styles.header}>
                     <Link href="/" className={styles.backLink}>← Retour à l'accueil</Link>
-                    <h1 className={styles.title}>Réserver votre espace</h1>
-                    <p className={styles.subtitle}>Sélectionnez l'espace, la date et l'heure pour garantir votre place.</p>
+                    <p className={styles.kicker}>Votre place, en quelques clics</p>
+                    <h1 className={styles.title}>Réserver<br />votre espace<span>.</span></h1>
+                    <p className={styles.subtitle}>Choisissez votre ambiance et votre créneau. Le règlement s’effectue simplement sur place.</p>
                 </div>
 
                 <div className={styles.bookingContainer}>
                     {/* Left Column: Form & Selection */}
                     <div className={styles.formSection}>
-                        <form className={styles.form}>
+                        <form className={styles.form} onSubmit={(event) => { event.preventDefault(); setConfirmed(true); }}>
                             <div className={styles.formGroup}>
                                 <label className={styles.label}>1. Choisissez votre espace</label>
                                 <div className={styles.optionsGrid}>
                                     {spaces.map((space) => (
-                                        <div
+                                        <button
+                                            type="button"
                                             key={space.id}
                                             className={`${styles.optionCard} ${selectedSpace === space.id ? styles.selected : ''}`}
                                             onClick={() => setSelectedSpace(space.id)}
+                                            aria-pressed={selectedSpace === space.id}
                                         >
                                             <h3>{space.title}</h3>
                                             <p>{space.desc}</p>
-                                        </div>
+                                        </button>
                                     ))}
                                 </div>
                             </div>
@@ -88,22 +92,24 @@ export default function Reserver() {
                             <div className={styles.formGroup}>
                                 <label className={styles.label}>4. Vos informations</label>
                                 <div className={styles.inputRow}>
-                                    <input type="text" placeholder="Prénom" className={styles.input} />
-                                    <input type="text" placeholder="Nom" className={styles.input} />
+                                    <input type="text" aria-label="Prénom" placeholder="Prénom" className={styles.input} required />
+                                    <input type="text" aria-label="Nom" placeholder="Nom" className={styles.input} required />
                                 </div>
-                                <input type="email" placeholder="Adresse e-mail" className={styles.input} style={{ marginTop: '1rem' }} />
+                                <input type="email" aria-label="Adresse e-mail" placeholder="Adresse e-mail" className={styles.input} style={{ marginTop: '1rem' }} required />
                             </div>
 
-                            <button type="button" className={`btn btn-primary ${styles.submitBtn}`} onClick={() => alert('Réservation confirmée ! (Ceci est une démo)')}>
+                            <button type="submit" className={`btn btn-primary ${styles.submitBtn}`}>
                                 Confirmer la réservation
                             </button>
+                            {confirmed && <p className={styles.success} role="status">Votre demande est prête. Cette confirmation reste une démonstration.</p>}
                         </form>
                     </div>
 
                     {/* Right Column: Summary */}
                     <div className={styles.summarySection}>
                         <div className={styles.summaryCard}>
-                            <h3 className={styles.summaryTitle}>Résumé de votre réservation</h3>
+                            <p className={styles.summaryKicker}>Votre sélection</p>
+                            <h3 className={styles.summaryTitle}>Résumé de la réservation</h3>
 
                             <div className={styles.summaryItem}>
                                 <span className={styles.summaryLabel}>Espace</span>

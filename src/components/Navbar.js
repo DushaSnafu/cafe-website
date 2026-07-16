@@ -6,7 +6,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [navTheme, setNavTheme] = useState('light');
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => setIsOpen((open) => !open);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,21 +35,21 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`navbar ${navTheme === 'dark' ? 'theme-dark' : ''}`}>
+    <nav className={`navbar ${navTheme === 'dark' ? 'theme-dark' : ''}`} aria-label="Navigation principale">
       <div className="container">
-        <Link href="/" className="nav-logo" onClick={() => setIsOpen(false)}>L'Équilibre</Link>
+        <Link href="/" className="nav-logo" onClick={() => setIsOpen(false)}>L'Équilibre<span>.</span></Link>
         
-        <button className={`burger-btn ${isOpen ? 'open' : ''}`} onClick={toggleMenu} aria-label="Menu">
+        <button className={`burger-btn ${isOpen ? 'open' : ''}`} onClick={toggleMenu} aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'} aria-expanded={isOpen} aria-controls="main-menu">
           <span></span>
           <span></span>
           <span></span>
         </button>
 
-        <div className={`nav-links ${isOpen ? 'active' : ''}`}>
-          <a href="/#concept" className="nav-item" onClick={() => setIsOpen(false)}>Le Concept</a>
+        <div id="main-menu" className={`nav-links ${isOpen ? 'active' : ''}`}>
+          <a href="/#concept" className="nav-item" onClick={() => setIsOpen(false)}>Le lieu</a>
           <a href="/#workspace" className="nav-item" onClick={() => setIsOpen(false)}>Espace Pro</a>
           <a href="/#garderie" className="nav-item" onClick={() => setIsOpen(false)}>Garderie</a>
-          <Link href="/programme" className="nav-item" onClick={() => setIsOpen(false)}>Café & DJ</Link>
+          <Link href="/programme" className="nav-item" onClick={() => setIsOpen(false)}>Programme</Link>
           <Link href="/reserver" className="nav-cta" onClick={() => setIsOpen(false)}>Réserver</Link>
         </div>
       </div>
